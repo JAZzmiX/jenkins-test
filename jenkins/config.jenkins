@@ -3,18 +3,19 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent { 
-		label 'main'
-		}
+	agent { 
+	label 'main'
+	}
 	// triggers { pollSCM('* * * * *') }
 	options {
 		buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
 		timestamps()
 	}
 	stages {
-	stage("Preparations") {
-		steps {
-			sh 'ssh root@134.122.86.255 \'hostname\''
+		stage("Preparations") {
+			steps {
+				sh 'ssh root@134.122.86.255 \'hostname\''
+			}
 		}
 	}
 }
